@@ -13,4 +13,8 @@ soup = BeautifulSoup(response.text, "lxml") #html.parser
 # print(soup)
 
 data = soup.find("div",class_="w-full rounded border")
-print(data)
+name = data.find('h4').text.replace("\n","")
+price = data.find('h5').text.replace("$","")
+
+print(name)
+print(price)
