@@ -4,9 +4,13 @@ https://scrapingclub.com/exercise/list_basic/?page=1
 pip install requests
 pip install beautifulsoup4
 pip install lxml
+pip install xlsxWriter
+
+
+https://quotes.toscrape.com
 
 
 
 https://youtu.be/lOfm04oLD1U
 
-45 : 03
+01 : 26 : 16

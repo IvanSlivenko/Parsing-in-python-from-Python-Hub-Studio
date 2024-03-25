@@ -18,21 +18,20 @@ for count in range(1, int(total_count)+1):
     for i in data:
         card_url = URL_SHORT + i.find("a").get('href')
         list_card_url.append(card_url)
-    # print(list_card_url)
 
-
-for card_url in list_card_url:
-    response = requests.get(card_url, headers=HEADERS_LIST)
+for card_URL in list_card_url:
+    response = requests.get(card_URL, headers=HEADERS_LIST)
     soup = BeautifulSoup(response.text, "lxml")  # html.parser
     data_card = soup.find("div", class_="my-8 w-full rounded border")
-    name = data_card.find('h3').text
-    print(name)
+
+    name = data_card.find("h3", class_="card-title").text
+    price = data_card.find("h4", class_="my-4 card-price").text.replace('$',"")
+    description = data_card.find("p", class_="card-description").text
+    url_img = URL_SHORT + data_card.find('img', class_="card-img-top").get('src')
+
+    print(f'{name} :\n{price} \n{description}\n{url_img}')
 
 
-        # name = i.find('h4').text.replace("\n","")
-        # price = i.find('h5').text.replace("$","")
-        # url_img = URL_SHORT + i.find("img", class_="card-img-top img-fluid").get("src")
-        # print(name+"\n"+price+"\n"+url_img+"\n\n")
 
 print('Парсинг сторінок завершено')
 
